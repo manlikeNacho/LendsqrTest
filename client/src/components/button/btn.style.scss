@@ -1,0 +1,63 @@
+$primary-color: #39CDCC;
+$secondary-color: #F7F7F7;
+$danger-color: #E4033B;
+
+/* src/components/Button/_button.scss */
+
+.button {
+    padding: 10px 20px;
+    font-family: 'Sen', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 19.12px;
+    letter-spacing: 0.1em;
+    border: none;
+    text-align: center;
+    border-radius: 5px;
+    cursor: pointer;
+    display: inline-block;
+    text-align: center;
+    transition: background-color 0.3s ease;
+  
+    &--solid {
+      color: #fff;
+    }
+  
+    &--outlined {
+      background: none;
+      border: 1px solid currentColor;
+    }
+  
+    &--primary {
+      background-color: $primary-color;
+      border-color: $primary-color;
+  
+      &.button--outlined {
+        color: $primary-color;
+      }
+    }
+  
+    &--secondary {
+      background-color: $secondary-color;
+      border-color: $secondary-color;
+  
+      &.button--outlined {
+        color: $secondary-color;
+      }
+    }
+  
+    &--danger {
+      background-color: $danger-color;
+      border-color: $danger-color;
+  
+      &.button--outlined {
+        color: $danger-color;
+      }
+    }
+  
+    &--loading {
+      cursor: not-allowed;
+      opacity: 0.6;
+    }
+  }
+  

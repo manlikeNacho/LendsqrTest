@@ -1,0 +1,104 @@
+$form-primary-color: #39CDCC;
+$primary-font-family: 'Sen', sans-serif;
+
+.login-wrapper {
+    height: 100%;
+    min-height: 100vh;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    .background-logo {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+
+        .logo-wrapper {
+            flex: none;
+            padding: 2.5rem 0 0 5rem;
+        }
+
+        .background-img-wrapper{
+            flex-grow: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        $breakpoint-tablet: 768px;
+        @media (max-width: $breakpoint-tablet) {
+            display: none;
+        }
+    }
+
+    .login-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+
+        .login-details {
+
+            display: flex;
+            width: 447px;
+            height: 100%;
+            flex-direction: column;
+            justify-content: center;
+            align-items: start;
+
+        .login-banner {
+            color: #213F7D;
+            font-family: "Sen", sans-serif;
+            font-optical-sizing: auto;
+            font-style: normal;
+            font-size: 40px;
+            font-weight: 700;
+            line-height: 54.64px;
+            letter-spacing: -0.04em;
+            text-align: left;
+            margin: 10px 0px;
+        }
+
+        .subtitle {
+            font-family: "Sen", sans-serif;
+            color: #545F7D;
+            font-size: 20px;
+            font-weight: 400;
+            line-height: 27.32px;
+            text-align: left;
+            margin: 5px 0px;
+        }
+
+        .forgot-password {
+            font-family: $primary-font-family;
+            color: $form-primary-color;
+            font-size: 12px;
+            font-weight: 600;
+            line-height: 16.39px;
+            letter-spacing: 0.1em;
+            text-align: left;
+            text-transform: uppercase;
+        }
+
+        form {
+            margin: 50px auto;
+            display: flex;
+            flex-direction: column;
+            max-width: 447px;
+            width: 100%;
+            gap: 15px;
+        }
+
+    }
+
+    $breakpoint-tablet: 768px;
+    @media (max-width: $breakpoint-tablet) {
+        grid-column: span 2 / span 2;
+        // display: none;
+    }
+
+    }
+
+
+}
