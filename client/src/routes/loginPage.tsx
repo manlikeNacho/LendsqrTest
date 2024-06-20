@@ -16,7 +16,6 @@ function LoginPage() {
         password: ''
     }
     const [formfield, setFormfield] = useState(defaualtFormfields)
-    const [visibility, setVisibility] = useState(false)
     const [error, setError] = useState(null)
     const {email, password} = formfield
   return (
@@ -43,7 +42,7 @@ function LoginPage() {
                     <Input
                     value={password}
                     onChange={(e) => setFormfield({...formfield, password: e.target.value})}
-                    type={visibility?"text":"password"}
+                    type="password"
                     placeholder="password"
                     showVisibilityToggle={true}
                     />

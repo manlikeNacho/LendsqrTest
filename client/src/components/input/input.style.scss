@@ -10,7 +10,8 @@ $font-family: 'Sen', sans-serif;
   
   .input-field {
     width: 100%;
-    padding: 10px;
+    min-width: 350px;
+    padding: 8px;
     font-size: 1em;
     border: 2px solid #545F7D26;
     border-radius: 5px;
@@ -20,15 +21,7 @@ $font-family: 'Sen', sans-serif;
     line-height: 19.12px;
     text-align: left;
     color: #545F7D;
-    
-    &::placeholder{
-        // font-family: $font-family;
-        // font-size: 14px;
-        // font-weight: 400;
-        // line-height: 19.12px;
-        // text-align: left;
-        // color: #545F7D;
-    }
+  
 
     &:focus {
         border: 2px solid $primary-color;
@@ -36,11 +29,17 @@ $font-family: 'Sen', sans-serif;
   }
   
   .icon {
+    width: 35px;
+    height: 100%;
+    background-color: $primary-color;
     position: absolute;
-    right: 10px;
+    right: 0px;
+    z-index: 999;
     cursor: pointer;
     display: flex;
     align-items: center;
+    justify-content: center;
+    border-radius: 0px 5px 5px 0px;
   
     &.left {
       left: 10px;
@@ -49,6 +48,7 @@ $font-family: 'Sen', sans-serif;
   }
   
   .visibility-toggle {
+    right: 10px;
     background: none;
     border: none;
     cursor: pointer;

@@ -5,12 +5,15 @@ import { Routes, Route } from 'react-router-dom';
 
 import './App.scss';
 import Dashboard from './routes/dashboard';
+import RequireAuth from './routes/requireAuth';
 
 function App() {
   return (
     <Routes>
       <Route path="/" element={<LoginPage />} />
-      <Route path='/dashboard' element={<Dashboard />} />
+      <Route element={<RequireAuth />}>
+        <Route path='/dashboard' element={<Dashboard />} />
+      </Route>
     </Routes>
   );
 }

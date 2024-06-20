@@ -1,14 +1,13 @@
 import React, { useState } from 'react';
-import classNames from 'classnames';
 import './input.style.scss';
-
+import searchIcon from '../../static/bell-icon.svg'
 interface InputProps {
   type: 'text' | 'password' | 'email';
   placeholder: string;
   value: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  leftIcon?: React.ReactNode;
-  rightIcon?: React.ReactNode;
+  leftIcon?: string;
+  rightIcon?: string;
   showVisibilityToggle?: boolean;
 }
 
@@ -29,7 +28,6 @@ const Input: React.FC<InputProps> = ({
 
   return (
     <div className="input-wrapper">
-      {leftIcon && <span className="icon left">{leftIcon}</span>}
       <input
         type={inputType}
         placeholder={placeholder}
@@ -42,7 +40,11 @@ const Input: React.FC<InputProps> = ({
           {inputType === 'password' ? 'SHOW' : 'HIDE'}
         </button>
       )}
-      {rightIcon && <span className="icon">{rightIcon}</span>}
+      {rightIcon && <div className="icon">
+        <img
+            src={rightIcon}
+            alt='search' className=''/>
+        </div>}
     </div>
   );
 };
