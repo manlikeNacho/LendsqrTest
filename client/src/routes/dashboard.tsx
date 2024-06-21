@@ -1,8 +1,12 @@
-import React from 'react'
+import '../styling/dashboard.style.scss'
+import DashboardCards from '../components/dasboard/dashboardCards'
 
 function Dashboard() {
   return (
-    <div>dashboard...</div>
+    <div className='dashboard-wrapper'>
+       <p>Users</p>
+      <DashboardCards />
+    </div>
   )
 }
 

@@ -1,0 +1,41 @@
+@import "../../styling/modules/mixin";
+@import "../../styling/modules/variables";
+
+.cards-wrapper {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 12px;
+}
+
+.card{
+    background-color: #fff;
+    border: 1px solid rgba(33, 63, 125, .06);
+    box-shadow: 3px 5px 20px #0000000a;
+    border-radius: 4px;
+    max-height: 160px;
+    padding: 20px;
+    @include flexbox($align: start, $justify:center, $direction:column);
+
+    cursor: pointer;
+
+    .card-title{
+        color: $activeColor;
+        font-family: $primaryFont;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 16.42px;
+        text-align: left;
+        text-transform: uppercase;
+
+    }
+
+    .card-stats{
+        font-family: $primaryFont;
+        color: $activeColor;
+        font-size: 24px;
+        font-weight: 600;
+        line-height: 28.15px;
+        text-align: left;
+    }
+}

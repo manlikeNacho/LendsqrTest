@@ -22,6 +22,10 @@ import trsfIcon from "./icons/trsf-icon.svg"
 import usercheckIcon from "./icons/user-check-icon.svg"
 import userCogIcon from "./icons/user-cog-icon.svg"
 import usersIcon from "./icons/users-icon.svg"
+import usersDashboardIcon from "./icons/users-dashboard-icon.svg"
+import usersLoanIcon from "./icons/users-loan-icon.svg"
+import activeUsersIcon from "./icons/active-users-dashboard-icon.svg"
+import usersSavingsIcon from './icons/users-savings-icon.svg'
 
 import avatarImg from "./images/avatar.png"
 import loginBackgroundImg from "./images/pablo-sign-in.png"
@@ -53,5 +57,9 @@ export {
     trsfIcon,
     usercheckIcon,
     userCogIcon,
-    usersIcon
+    usersIcon,
+    usersDashboardIcon,
+    usersLoanIcon,
+    activeUsersIcon,
+    usersSavingsIcon
 }
