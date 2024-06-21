@@ -1,0 +1,37 @@
+@mixin desktop {
+    @media screen and (min-width: 1558px) {
+      @content;
+    }
+  }
+  @mixin minlaptop {
+    @media screen and (min-width: 1024px) {
+      @content;
+    }
+  }
+  @mixin laptop {
+    @media screen and (min-width: 1200px) {
+      @content;
+    }
+  }
+  @mixin tab {
+    @media screen and (min-width: 945px) {
+      @content;
+    }
+  }
+  @mixin tablet {
+    @media screen and (max-width: 768px) {
+      @content;
+    }
+  }
+  @mixin phone {
+    @media screen and (min-width: 548px) {
+      @content;
+    }
+  }
+  @mixin flexbox($direction: row, $justify: center, $align: center) {
+    display: flex;
+    justify-content: $justify;
+    align-items: $align;
+    flex-direction: $direction;
+  }
+  

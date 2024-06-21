@@ -1,4 +1,4 @@
-import dropdownIcon from '../../static/dropdown-icon.svg'
+import { dropdownIcon } from '../../static';
 import '../../styling/avatar.style.scss'
 
 

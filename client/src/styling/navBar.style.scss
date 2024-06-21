@@ -1,3 +1,5 @@
+@import "./modules/mixin";
+
 $primary-color: #213F7D;
 $font-family:"Work Sans", sans-serif;
 $breakpoint-tablet: 768px;
@@ -9,6 +11,8 @@ $breakpoint-tablet: 768px;
 }
 
 .top-navBar{
+    z-index: 999;
+    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -24,7 +28,7 @@ $breakpoint-tablet: 768px;
         gap: 50px;
 
         .searchHandler{
-            @media (max-width: $breakpoint-tablet) {
+            @include tablet {
                 display: none;
             }
         }

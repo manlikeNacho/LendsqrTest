@@ -1,6 +1,5 @@
-import React, { useState } from 'react'
-import logo from '../static/lendsqr-logo.png'
-import signInImage from '../static/pablo-sign-in.png'
+import { useState } from 'react'
+import { logoIcon, loginBackgroundImg } from '../static'
 import '../styling/login.styles.scss'
 import Button from '../components/button/btn'
 import Input from '../components/input/Input'
@@ -22,10 +21,10 @@ function LoginPage() {
     <section className='login-wrapper'>
         <div className="background-logo">
             <div className="logo-wrapper">
-                <img src={logo} alt='lendqsr-logo' />
+                <img src={logoIcon} alt='lendqsr-logo' />
             </div>
             <div className="background-img-wrapper">
-            <img src={signInImage} alt='sign-in background' />
+            <img src={loginBackgroundImg} alt='sign-in background' />
             </div>
         </div>
         <div className='login-wrapper'>

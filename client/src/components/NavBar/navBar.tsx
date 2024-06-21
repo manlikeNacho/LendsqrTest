@@ -1,10 +1,7 @@
 import React, { useState } from 'react'
-import logo from '../../static/logo.svg'
+import { logoIcon, bellIcon, avatarImg, searchIcon } from '../../static'
 import Input from '../input/Input'
-import bellIcon from '../../static/bell-icon.svg'
 import AvatarHandler from './avartarHandler'
-import searchIcon from '../../static/searchIcon.png'
-import avatarDp from '../../static/avatar.png'
 import '../../styling/navBar.style.scss'
 
 const NavBar:React.FC = ()=> {
@@ -13,7 +10,7 @@ const NavBar:React.FC = ()=> {
     <div className='top-navBar'>
         <div className="logo-wrapper">
             <img
-            src={logo}
+            src={logoIcon}
             alt='lendsqr-logo'
             className='logo'
             />
@@ -31,7 +28,7 @@ const NavBar:React.FC = ()=> {
         <div className='avatar-wrapper'>
             <span className="docs-link">docs</span>
             <img src={bellIcon} alt='notification-icon' className='notification-icon'/>
-            <AvatarHandler src={avatarDp} alt='user-name' name='nacho' />
+            <AvatarHandler src={avatarImg} alt='user-name' name='nacho' />
         </div>
     </div>
   )

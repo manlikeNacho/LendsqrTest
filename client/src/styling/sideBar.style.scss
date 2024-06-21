@@ -1,0 +1,80 @@
+@import "./modules/mixin";
+@import "./modules/variables";
+
+.show {
+  left: 0 !important;
+}
+
+.sideBar-wrapper {
+  @include flexbox($direction: column, $justify: start, $align: start);
+  gap: 12px;
+  position: absolute;
+  top: 0;
+  background-color: $white;
+  left: -100%;
+  transition: all 300ms ease;
+  z-index: 10;
+
+  @include laptop {
+    position: relative;
+    left: 0;
+    z-index: 0;
+  }
+
+  .link {
+    @include flexbox($justify: start, $align: center);
+    gap: 8px;
+    padding: 12px 25px;
+    cursor: pointer;
+    width: 100%;
+
+    &:hover {
+      background-color: #39cdcd17;
+      transition: all 300ms ease;
+      border-left: 3px solid $primary;
+
+      img,
+      span {
+        opacity: 1;
+      }
+    }
+
+    img {
+      opacity: 0.6;
+    }
+
+    span {
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 19px;
+      color: $activeColor;
+      opacity: 0.6;
+    }
+  }
+
+  .switchLink {
+    @include flexbox($direction: column, $justify: start, $align: start);
+    width: 100%;
+    gap: 12px;
+  }
+
+  .links {
+    @include flexbox($direction: column, $justify: start, $align: start);
+    width: 100%;
+    gap: 12px;
+
+    h2 {
+      font-weight: 500;
+      font-size: 12px;
+      line-height: 14px;
+      font-family: $primaryFont;
+      color: $grayColor;
+      padding: 20px 25px 0;
+      text-transform: uppercase;
+    }
+  }
+
+  .settings {
+    padding-bottom: 15vh;
+  }
+}
