@@ -26,6 +26,9 @@ import usersDashboardIcon from "./icons/users-dashboard-icon.svg"
 import usersLoanIcon from "./icons/users-loan-icon.svg"
 import activeUsersIcon from "./icons/active-users-dashboard-icon.svg"
 import usersSavingsIcon from './icons/users-savings-icon.svg'
+import filterIcon from './icons/filter-icon.svg'
+import nextBtn from './icons/next-btn.svg'
+import prevBtn from './icons/prev-btn.svg'
 
 import avatarImg from "./images/avatar.png"
 import loginBackgroundImg from "./images/pablo-sign-in.png"
@@ -61,5 +64,8 @@ export {
     usersDashboardIcon,
     usersLoanIcon,
     activeUsersIcon,
-    usersSavingsIcon
+    usersSavingsIcon,
+    filterIcon,
+    nextBtn,
+    prevBtn
 }

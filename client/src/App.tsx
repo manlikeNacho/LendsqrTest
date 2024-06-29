@@ -6,6 +6,7 @@ import { Routes, Route } from 'react-router-dom';
 import './App.scss';
 import Dashboard from './routes/dashboard';
 import RequireAuth from './routes/requireAuth';
+import UserDetails from './routes/userDetails';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <Route path="/" element={<LoginPage />} />
       <Route element={<RequireAuth />}>
         <Route path='/dashboard' element={<Dashboard />} />
+        <Route path='/dashboard/:id' element={<UserDetails />} />
       </Route>
     </Routes>
   );

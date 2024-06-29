@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './input.style.scss';
-import searchIcon from '../../static/bell-icon.svg'
+
+
 interface InputProps {
   type: 'text' | 'password' | 'email';
   placeholder: string;
@@ -9,6 +10,8 @@ interface InputProps {
   leftIcon?: string;
   rightIcon?: string;
   showVisibilityToggle?: boolean;
+  iconBgColor?: boolean
+  label?: string;
 }
 
 const Input: React.FC<InputProps> = ({
@@ -16,9 +19,10 @@ const Input: React.FC<InputProps> = ({
   placeholder,
   value,
   onChange,
-  leftIcon,
   rightIcon,
   showVisibilityToggle = false,
+  iconBgColor = true,
+  label,
 }) => {
   const [inputType, setInputType] = useState(type);
 
@@ -28,6 +32,11 @@ const Input: React.FC<InputProps> = ({
 
   return (
     <div className="input-wrapper">
+      {
+        label && <label className='label'>
+          {label}
+        </label>
+      }
       <input
         type={inputType}
         placeholder={placeholder}
@@ -40,7 +49,7 @@ const Input: React.FC<InputProps> = ({
           {inputType === 'password' ? 'SHOW' : 'HIDE'}
         </button>
       )}
-      {rightIcon && <div className="icon">
+      {rightIcon && <div className={`icon ${!iconBgColor && "bgColor-none"}`}>
         <img
             src={rightIcon}
             alt='search' className=''/>
