@@ -26,6 +26,7 @@
         padding: 10px 0;
         @include flexbox( $justify: start, $align: center);
         gap: 15px; 
+        cursor: pointer;
     }
 
     .email  {

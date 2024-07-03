@@ -1,0 +1,12 @@
+@import "../../styling/modules/mixin";
+@import "../../styling/modules/variables";
+
+.filter-Modal{
+    @include flexbox($align: start, $justify:center, $direction:column);
+    gap: 20px;
+
+    .button-group{
+        @include flexbox($align: center, $justify:space-between);
+        gap: 25px;
+    }
+}

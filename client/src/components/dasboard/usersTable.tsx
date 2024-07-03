@@ -109,9 +109,8 @@ const UserTable: React.FC = () => {
     const [showFilterModal, setShowFilterModal] = useState(false);
     const filterDefaultProps = {
         email: "",
-        username: "",
-        phone: 0,
-        status: "",
+        userName: "",
+        phoneNumber: 0,
         date: new Date(),
     };
 
@@ -137,11 +136,11 @@ const UserTable: React.FC = () => {
         fetchUsers();
     }, []);
 
-    useEffect(() => {
-        setFilteredUsers(filterUsers(allUsers, filterDetails));
-      }, [allUsers, filterDetails]);
-
-    const {currentData, next, prev, jump, currentPage, maxPage}  = usePagination(filteredUsers, 9)
+    // useEffect(() => {
+    //     setFilteredUsers(filterUsers(allUsers, filterDetails));
+    //   }, [allUsers, filterDetails]);
+    const list = filteredUsers.length>0? filteredUsers: allUsers
+    const {currentData, next, prev, jump, currentPage, maxPage}  = usePagination(list, 9)
     const filterOnChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
         setFilterDetails({...filterDetails, [name]: value})
@@ -151,6 +150,8 @@ const UserTable: React.FC = () => {
         setFilteredUsers(filterUsers(allUsers, filterDetails));
         setShowFilterModal(false);
     }
+
+    console.log(list)
     
 
     return (

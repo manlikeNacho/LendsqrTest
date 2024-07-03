@@ -24,8 +24,7 @@ $danger-color: #E4033B;
     }
   
     &--outlined {
-      background: none;
-      border: 1px solid currentColor;
+      color: $primary-color;
     }
   
     &--primary {
@@ -33,6 +32,8 @@ $danger-color: #E4033B;
       border-color: $primary-color;
   
       &.button--outlined {
+        background-color: white;
+        border: 1px solid $primary-color;
         color: $primary-color;
       }
     }
