@@ -2,7 +2,6 @@ $primary-color: #39CDCC;
 $secondary-color: #F7F7F7;
 $danger-color: #E4033B;
 
-/* src/components/Button/_button.scss */
 
 .button {
     padding: 10px 20px;
@@ -18,6 +17,7 @@ $danger-color: #E4033B;
     display: inline-block;
     text-align: center;
     transition: background-color 0.3s ease;
+    text-transform: capitalize;
   
     &--solid {
       color: #fff;

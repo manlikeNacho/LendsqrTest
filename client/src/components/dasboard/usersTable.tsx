@@ -1,6 +1,5 @@
 import './usertable.style.scss';
-import { useEffect, useState } from "react";
-import { filterIcon, nextBtn, prevBtn } from "../../static";
+import { useEffect, useState, useMemo } from "react";
 import Spinner from '../spinner/spinner';
 import axios from 'axios';
 import usePagination from '../../utils/pagination';
@@ -8,82 +7,35 @@ import Modal from '../modal/modal';
 import FilterModal from './filterModal';
 import { UsersInterface } from '../../utils/usersFilter';
 import { filterUsers } from '../../utils/usersFilter';
+import PaginationTab from './paginationTab';
+import FilterTab from './filterTab';
+import { filterIcon } from '../../static';
 
 
-//FilterTab
-interface filterTab {
-    setShowFilterModal: (v: boolean) => void;
-    setFilterDetails: (filterDetails: any) => void;
-    filterDetails: any;
-}
-
-const FilterTab: React.FC<filterTab> = ({ setFilterDetails, setShowFilterModal, filterDetails }) => {
-    const filterOptions = ["Organisation", "username", "email", "phone number", "date joined", "status"];
+const UsersMobileView:React.FC<{user?: any}> = ({user}) => {
 
     return (
-        <div className="filter-tab">
-            {filterOptions.map((value, index) => (
-                <div className={`filter-option ${value === 'email' ? "email":value === 'date joined'? 'date-joined':''}`} key={index} onClick={()=> (setShowFilterModal( true ))}>
-
-                    <span className="filter-text">{value}</span>
-                    <img src={filterIcon} alt="" className="filter-icon" />
+            <div className="users-card">
+                <div className="username details">
+                    <span className='title'>Username</span>
+                    <span className="content">{user.userName}</span>
                 </div>
-            ))}
-        </div>
-    );
-}
-
-
-//Pagination Section
-interface paginationProps {
-    next: () => void;
-    prev: () => void;
-    currentPage: number;
-    maxPage: number;
-    jump: (v: number) => void;
-}
-
-const PaginationTab: React.FC<paginationProps> = ({ next, prev, jump, currentPage, maxPage }) => {
-    //Generates display numbers e.g 1,2,..., 8,9
-    const generatePageNumbers = () => {
-        const pages = [];
-        if (maxPage <= 5) {
-            for (let i = 1; i <= maxPage; i++) {
-                pages.push(i);
-            }
-        } else {
-            pages.push(1);
-            if (currentPage > 3) {
-                pages.push("...");
-            }
-            for (let i = Math.max(2, currentPage - 1); i <= Math.min(maxPage - 1, currentPage + 1); i++) {
-                pages.push(i);
-            }
-            if (currentPage < maxPage - 2) {
-                pages.push("...");
-            }
-            pages.push(maxPage);
-        }
-        return pages;
-    }
-
-    const pages = generatePageNumbers();
-
-    return (
-        <div className="pagination-wrapper">
-            <img src={prevBtn} alt="prev-button" className="btn" onClick={prev} />
-            {pages.map((page, index) => (
-                <span
-                    key={index}
-                    className={`page-number ${currentPage === page ? 'active' : ''}`}
-                    onClick={() => typeof page === 'number' && jump(page)}
-                >
-                    {page}
-                </span>
-            ))}
-            <img src={nextBtn} alt="next-button" className="btn" onClick={next} />
-        </div>
-    );
+                <div className="organization details">
+                    <span className='title'>Organization</span>
+                    <span className="content">{user.orgName}</span>
+                </div>
+                <div className="username details">
+                    <span className='title'>Date Joined</span>
+                    <span className="content">{new Date(user.createdAt).toLocaleDateString('en-US',{
+                        year: 'numeric', month: 'long', day: 'numeric'
+                    })}</span>
+                </div>
+                <div className="username details">
+                    <span className='title'>Phone Number</span>
+                    <span className="content">{user.phoneNumber}</span>
+                </div>
+            </div>
+    )
 }
 
 
@@ -94,7 +46,7 @@ const User: React.FC<{ user: any }> = ({ user }) => {
             <span className='filter-text users-text'>{user.userName}</span>
             <span className='filter-text users-text email'>{user.email}</span>
             <span className='filter-text users-text'>{user.phoneNumber}</span>
-            <span className='filter-text users-text date-joined'>{new Date(user.createdAt).toLocaleDateString()}</span> {/* formatted date */}
+            <span className='filter-text users-text date-joined'>{new Date(user.createdAt).toLocaleDateString('en-US')}</span>
             <span className='filter-text users-text'>status</span>
         </div>
     );
@@ -136,10 +88,8 @@ const UserTable: React.FC = () => {
         fetchUsers();
     }, []);
 
-    // useEffect(() => {
-    //     setFilteredUsers(filterUsers(allUsers, filterDetails));
-    //   }, [allUsers, filterDetails]);
-    const list = filteredUsers.length>0? filteredUsers: allUsers
+    const list = useMemo(() => filteredUsers.length > 0 ? filteredUsers : allUsers, [filteredUsers, allUsers]);
+
     const {currentData, next, prev, jump, currentPage, maxPage}  = usePagination(list, 9)
     const filterOnChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
@@ -151,13 +101,23 @@ const UserTable: React.FC = () => {
         setShowFilterModal(false);
     }
 
-    console.log(list)
     
 
     return (
         <div className="users-wrapper">
+            <div className="users-mobile-view">
+            <div className="sort-tab">
+                <h2>Sort</h2>
+                <img src={filterIcon} alt="/" className="" />
+            </div>
+                {
+                    loading ? <Spinner /> : (
+                        currentData().map((user: any)=> (<UsersMobileView user={user} />))
+                    )
+                }
+            </div>
             <div className="table-container">
-                <FilterTab setFilterDetails={setFilterDetails} setShowFilterModal={setShowFilterModal} filterDetails={filterDetails}/>
+                <FilterTab setShowFilterModal={setShowFilterModal}/>
                 <Modal show={showFilterModal} setShow={setShowFilterModal}><FilterModal filterDetails={filterDetails} onChange={filterOnChangeHandler} onSubmit={filterOnSubmitHandler}/></Modal>
                 {loading ? <Spinner /> : (
                     <div>

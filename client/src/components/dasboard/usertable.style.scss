@@ -3,16 +3,71 @@
 
 .users-wrapper{
     min-height: 100vh;
+
+    @media screen and (max-width: 768px) {
+        width: 100%;
+    }
 }
 
 
+
+
 .table-container {
+    display: none;
     position: relative;
     width: 100%;
     background-color: $white;
     border-radius: 5px;
     box-shadow: 3px 5px 20px 0px #0000000A;
     padding: 10px;    
+
+    @include phone {
+        display: block;
+    }
+}
+
+.users-mobile-view {
+    display: block;
+    position: relative;  
+
+    @include phone {
+        display: none;
+    }
+
+    .sort-tab {
+    color: $activeColor;
+    @include flexbox($justify: space-between, $align: center)
+    }
+
+    .users-card{
+    background-color: $white;
+    border-radius: 5px;
+    box-shadow: 3px 5px 20px 0px #0000000A;
+    padding: 10px; 
+    margin: 15px 0;
+    cursor: pointer; 
+
+    .details {
+        @include flexbox($justify: space-between, $align: center);
+        color: $activeColor;
+        font-family: $primaryFont;
+
+        .title{
+            text-transform: uppercase;
+            font-size: 12px;
+            font-weight: 400;
+            line-height: 14.08px;
+            text-align: left;
+        }
+
+        .content{
+            font-size: 14px;
+            font-weight: 500;
+            line-height: 18.77px;
+            text-align: right;
+        }
+    }
+    }
 }
 
 .filter-tab, .user-tab {
@@ -92,4 +147,9 @@
     .btn{
         cursor: pointer;
     }
+}
+
+.users-footer {
+    padding: 25px 0;
+    @include flexbox($align: center, $justify: flex-end);
 }
