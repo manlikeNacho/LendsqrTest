@@ -1,0 +1,207 @@
+@import "../styling/modules/mixin";
+@import "../styling/modules/variables";
+
+.userDetails-wrapper {
+    width: 90%;
+    margin: 0 auto;
+    padding: 20px;
+    @include flexbox($align: start,$justify:start, $direction: column);
+    gap: 30px;
+    padding-bottom: 15vh;
+}
+
+.navigateBack {
+    @include flexbox($justify: start, $align: center);
+    gap: 20px;
+
+    h3{
+        font-family: $primaryFont;
+        color: $grayColor;
+        font-size: 16px;
+    };
+
+    &:hover{
+        cursor: pointer;
+
+        img{
+            transform: translateX(-10px);
+            transition: all 800ms ease-in-out;
+        }
+    }
+}
+
+.topBar {
+    width: 100%;
+    @include flexbox($justify: space-between, $align: center);
+    h1{
+        font-family: $primaryFont;
+        color: $activeColor;
+        font-size: 16px;
+        font-weight: 500;
+        font-size: 24px;
+        line-height: 28.15px;
+    }
+
+    .topBarBtns {
+        @include flexbox($justify: space-between, $align: center);
+        gap: 15px;
+
+        button{
+            cursor: pointer;
+        }
+    }
+}
+
+.headerDetails, .content-wrapper{
+    width: 100%;
+    border-radius: 4px;
+    background-color: white;
+    border: 1px solid #213F7D0F;
+    box-shadow: 3px 5px 20px 0px #0000000A;
+}
+    .user-top-info{
+        @include flexbox($justify: start, $align: center);
+        gap: 20px;
+        padding: 20px;
+
+        .userDp {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: rgba(33, 63, 125, 0.16);
+            @include flexbox($justify: center, $align: center)
+        }
+
+
+        .user-fullname{
+            font-family: $primaryFont;
+            color: $activeColor;
+
+            span{
+                display: block;
+            }
+
+            .name{
+                font-size: 22px;
+                font-weight: 500;
+                line-height: 25.81px;
+                text-align: left;
+            }
+
+            .id{
+                font-size: 14px;
+                font-weight: 400;
+                line-height: 16.42px;
+                text-align: left;
+            }
+        }
+
+
+        .user-tier{
+            height: 80px;
+            border-left: 1px solid rgba(84, 95, 125, 0.2);
+            border-right: 1px solid rgba(84, 95, 125, 0.2);
+            padding: 0 10px;
+            @include flexbox($justify: center, $align: center);
+            color: $activeColor;
+
+            h3{
+                font-family: $primaryFont;
+                font-size: 14px;
+                font-weight: 500;
+                line-height: 16.42px;
+                text-align: left;
+            }
+        }
+
+        .bank-details {
+            font-family: $primaryFont;
+            color: $activeColor;
+
+            span{
+                display: block;
+            }
+
+            .balance {
+                font-family: $primaryFont;
+                font-size: 22px;
+                font-weight: 500;
+                line-height: 25.81px;
+                text-align: left;
+            }
+            
+            .account-details{
+                font-family: $primaryFont;
+                font-size: 12px;
+                font-weight: 400;
+                line-height: 14.08px;
+                text-align: left;
+            }
+            
+        }
+    }
+
+
+    .content-wrapper {
+        // padding: 10px;
+        width: 100%;
+        margin: 25px 0;
+        .content{
+            padding: 15px 0;
+            width: 95%;
+            margin: 0 auto;
+            @include flexbox($justify: start, $align: start, $direction: column);
+            gap: 20px;
+            border-bottom: 1px solid rgba(33, 63, 125, 0.2) ;
+
+            .content-header{
+                color: $activeColor;
+                font-family: $primaryFont;
+                font-size: 16px;
+                font-weight: 500;
+                line-height: 18.77px;
+                text-align: left;
+            }
+
+            .info-wrapper{
+                width: 100%;
+                display: grid;
+                grid-template-columns: repeat(5, minmax(max-content, 1fr));
+                justify-content: start;
+                gap: 25px;
+
+                .info{
+                    @include flexbox($direction: column, $align: start);
+                    gap: 8px;
+                    font-family: $primaryFont;
+                    color: $activeColor;
+
+                    span{
+                        display: block;
+                    }
+
+                    .title{
+                        font-size: 12px;
+                        font-weight: 400;
+                        line-height: 14.08px;
+                        text-align: left;
+                        text-transform: uppercase;
+                    }
+
+                    .value{
+                        font-size: 16px;
+                        font-weight: 500;
+                        line-height: 18.77px;
+                        text-align: left;
+                    }
+                }
+            }
+        };
+
+        .content:last-child{
+            border-bottom: none;
+        }
+    }
+
+
+

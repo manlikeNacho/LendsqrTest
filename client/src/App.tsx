@@ -7,16 +7,19 @@ import './App.scss';
 import Dashboard from './routes/dashboard';
 import RequireAuth from './routes/requireAuth';
 import UserDetails from './routes/userDetails';
+import { UsersContextProvider } from './context/usersContext';
 
 function App() {
   return (
-    <Routes>
+    <UsersContextProvider>
+      <Routes>
       <Route path="/" element={<LoginPage />} />
       <Route element={<RequireAuth />}>
         <Route path='/dashboard' element={<Dashboard />} />
         <Route path='/dashboard/:id' element={<UserDetails />} />
       </Route>
     </Routes>
+    </UsersContextProvider>
   );
 }
 

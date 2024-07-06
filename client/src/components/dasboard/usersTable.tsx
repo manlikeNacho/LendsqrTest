@@ -1,21 +1,24 @@
 import './usertable.style.scss';
-import { useEffect, useState, useMemo } from "react";
+import { useEffect, useState, useMemo, useContext } from "react";
 import Spinner from '../spinner/spinner';
 import axios from 'axios';
 import usePagination from '../../utils/pagination';
 import Modal from '../modal/modal';
 import FilterModal from './filterModal';
-import { UsersInterface } from '../../utils/usersFilter';
+// import { UsersInterface } from '../../utils/usersFilter';
 import { filterUsers } from '../../utils/usersFilter';
 import PaginationTab from './paginationTab';
 import FilterTab from './filterTab';
 import { filterIcon } from '../../static';
+import { User, useUsersContext } from '../../context/usersContext';
+import { useNavigate } from 'react-router-dom';
 
 
 const UsersMobileView:React.FC<{user?: any}> = ({user}) => {
+    const navigate = useNavigate()
 
     return (
-            <div className="users-card">
+            <div className="users-card" onClick={()=> (navigate(user.id))}>
                 <div className="username details">
                     <span className='title'>Username</span>
                     <span className="content">{user.userName}</span>
@@ -39,9 +42,10 @@ const UsersMobileView:React.FC<{user?: any}> = ({user}) => {
 }
 
 
-const User: React.FC<{ user: any }> = ({ user }) => {
+const UserInfo: React.FC<{ user: any }> = ({ user }) => {
+    const navigate = useNavigate()
     return (
-        <div className="user-tab">
+        <div className="user-tab" onClick={()=> (navigate(user.id))}>
             <span className='filter-text users-text'>{user.orgName}</span>
             <span className='filter-text users-text'>{user.userName}</span>
             <span className='filter-text users-text email'>{user.email}</span>
@@ -58,6 +62,7 @@ const User: React.FC<{ user: any }> = ({ user }) => {
 
 
 const UserTable: React.FC = () => {
+    const {users, setUsers} = useUsersContext()
     const [showFilterModal, setShowFilterModal] = useState(false);
     const filterDefaultProps = {
         email: "",
@@ -67,19 +72,20 @@ const UserTable: React.FC = () => {
     };
 
     const [filterDetails, setFilterDetails] = useState(filterDefaultProps);
-    const [allUsers, setAllUsers] = useState<UsersInterface[]>([]);
-    const [filteredUsers, setFilteredUsers] = useState<UsersInterface[]>([]);
+    const [error , setError] = useState<boolean>(false)
+    const [filteredUsers, setFilteredUsers] = useState<User[]>([]);
     const [loading, setLoading] = useState(false);
 
     useEffect(() => {
         const fetchUsers = async () => {
             setLoading(true);
+            setError(false)
             try {
                 const response = await axios.get('https://6270020422c706a0ae70b72c.mockapi.io/lendsqr/api/v1/users');
-                //console.log(response.data);
-                // localStorage.setItem("users", response.data)
-                setAllUsers(response.data);
+                setUsers(response.data)
+                localStorage.setItem("users", JSON.stringify(response.data))
             } catch (error) {
+                setError(true)
                 console.log(error);
             }
             setLoading(false);
@@ -88,7 +94,7 @@ const UserTable: React.FC = () => {
         fetchUsers();
     }, []);
 
-    const list = useMemo(() => filteredUsers.length > 0 ? filteredUsers : allUsers, [filteredUsers, allUsers]);
+    const list = useMemo(() => filteredUsers.length > 0 ? filteredUsers : users, [filteredUsers, users]);
 
     const {currentData, next, prev, jump, currentPage, maxPage}  = usePagination(list, 9)
     const filterOnChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -97,9 +103,15 @@ const UserTable: React.FC = () => {
     }
 
     const filterOnSubmitHandler = () =>{
-        setFilteredUsers(filterUsers(allUsers, filterDetails));
+        setFilteredUsers(filterUsers(users, filterDetails));
         setShowFilterModal(false);
     }
+
+    if (error) (
+        <div className="table-container">
+            An Error occured
+        </div> 
+    )
 
     
 
@@ -123,7 +135,7 @@ const UserTable: React.FC = () => {
                     <div>
                         {/* Render your table here with filteredUsers data */}
                         {
-                            currentData().map((user: any) => (<User key={user.id} user={user} />))
+                            currentData().map((user: any) => (<UserInfo key={user.id} user={user} />))
                         }
                     </div>
                 )}

@@ -29,6 +29,8 @@ import usersSavingsIcon from './icons/users-savings-icon.svg'
 import filterIcon from './icons/filter-icon.svg'
 import nextBtn from './icons/next-btn.svg'
 import prevBtn from './icons/prev-btn.svg'
+import navigateBackIcon from './icons/navigateBack.svg'
+import userDp from './icons/userDp.svg'
 
 import avatarImg from "./images/avatar.png"
 import loginBackgroundImg from "./images/pablo-sign-in.png"
@@ -67,5 +69,7 @@ export {
     usersSavingsIcon,
     filterIcon,
     nextBtn,
-    prevBtn
+    prevBtn,
+    navigateBackIcon,
+    userDp
 }
