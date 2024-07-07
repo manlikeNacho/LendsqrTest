@@ -1,4 +1,5 @@
 import logoIcon from "./icons/logo.svg";
+import lendsqrLogo from './icons/lendsqrLogo.svg'
 import dropdownIcon from "./icons/dropdown-icon.svg";
 import bellIcon from "./icons/bell-icon.svg"
 import searchIcon from "./icons/search-icon.svg"
@@ -37,6 +38,7 @@ import loginBackgroundImg from "./images/pablo-sign-in.png"
 
 
 export {
+    lendsqrLogo,
     loginBackgroundImg,
     logoIcon,
     dropdownIcon,

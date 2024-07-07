@@ -1,5 +1,5 @@
 import './usertable.style.scss';
-import { useEffect, useState, useMemo, useContext } from "react";
+import { useEffect, useState, useMemo } from "react";
 import Spinner from '../spinner/spinner';
 import axios from 'axios';
 import usePagination from '../../utils/pagination';
