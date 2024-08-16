@@ -3,6 +3,7 @@ import { logoIcon, loginBackgroundImg } from '../static'
 import '../styling/login.styles.scss'
 import Button from '../components/button/btn'
 import Input from '../components/input/Input'
+import { useNavigate } from 'react-router-dom'
 
 interface formfield {
     email: string,
@@ -17,6 +18,7 @@ function LoginPage() {
     const [formfield, setFormfield] = useState(defaualtFormfields)
     const [error, setError] = useState(null)
     const {email, password} = formfield
+    const router = useNavigate()
   return (
     <section className='login-wrapper'>
         <div className="background-logo">
@@ -46,7 +48,9 @@ function LoginPage() {
                     showVisibilityToggle={true}
                     />
                     <p className='forgot-password'>forgot password</p>
-                    <Button >LOG IN</Button>
+                    <Button 
+                    onClick={() => router('/dashboard')}
+                    >LOG IN</Button>
                 </form>
             </div>
         </div>
